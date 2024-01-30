@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         element: <BookService></BookService>,
         loader: ({ params }) =>
           fetch(
-            `https://car-doctor-server-mt7aj5g5m-devasrafulislam.vercel.app/services/${params.id}`
+            `https://car-doctor-server-with-jwt-orpin.vercel.app/services/${params.id}`
           ),
       },
       {
