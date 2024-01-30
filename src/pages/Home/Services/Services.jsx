@@ -3,15 +3,15 @@ import ServiceCard from "./ServiceCard";
 import ServiceShidule from "./ServiceShidule";
 
 const Services = () => {
-  const [services, setServices] = useState();
+  const [services, setServices] = useState([]);
+  console.log(services);
 
   useEffect(() => {
-    fetch(
-      "https://car-doctor-server-mt7aj5g5m-devasrafulislam.vercel.app/services"
-    )
+    fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   });
+
   return (
     <div className="mt-4 ">
       <div className="text-center">
@@ -24,11 +24,12 @@ const Services = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-          {services &&
+          {services.length > 0 &&
             services.map((service) => (
               <ServiceCard key={service._id} service={service}></ServiceCard>
             ))}
         </div>
+
         <button className="btn text-white mt-14 btn-outline bg-[#FF3811] mr-5">
           More Services
         </button>
